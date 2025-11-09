@@ -1,0 +1,4 @@
+2025-11-05 13:35:36,814 - ai_agent - INFO - 正在初始化GUI应用...
+2025-11-05 13:35:37,759 - ai_agent - INFO - 使用模型: deepseek-chat, API基础URL: https://api.deepseek.com/v1
+2025-11-05 13:35:38,716 - ai_agent - INFO - 使用模型: deepseek/deepseek-chat, API基础URL: https://api.deepseek.com/v1
+2025-11-05 13:35:39,105 - workflow_integration - INFO - 工作流集成初始化完成
