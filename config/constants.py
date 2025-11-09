@@ -18,7 +18,7 @@ BASELINE_PROCESSES_FILE = os.path.join(JSON_CONFIG_DIR, "baseline_processes.json
 
 # API密钥配置
 OPENAI_API_KEY = "NULL"
-DEEPSEEK_API_KEY = "sk-1aeff186e543478e92bdcf41d04545a3"
+DEEPSEEK_API_KEY = ""
 DEEPSEEK_API_BASE = "https://api.deepseek.com/v1"
 
 # 时间间隔配置（秒）
