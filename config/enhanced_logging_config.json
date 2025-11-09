@@ -1,0 +1,121 @@
+{
+  "enhanced_logging": {
+    "enabled": true,
+    "description": "增强日志系统配置",
+    "features": {
+      "role_based_logging": {
+        "enabled": true,
+        "description": "按角色分类记录日志"
+      },
+      "group_based_logging": {
+        "enabled": true,
+        "description": "按角色组分类记录日志"
+      },
+      "structured_logging": {
+        "enabled": true,
+        "description": "结构化日志存储"
+      },
+      "metadata_tracking": {
+        "enabled": true,
+        "description": "记录详细的元数据信息"
+      }
+    },
+    "storage": {
+      "base_directory": "config/log/enhanced",
+      "structure": {
+        "groups": "按角色组分类的日志目录",
+        "roles": "按角色分类的日志目录",
+        "operations": "操作记录目录",
+        "reports": "报告记录目录",
+        "analysis": "分析和摘要目录"
+      },
+      "file_formats": {
+        "json": "结构化数据存储",
+        "log": "可读文本格式"
+      }
+    },
+    "log_types": {
+      "pre_execution": {
+        "description": "执行前报告",
+        "fields": ["timestamp", "role_name", "group_id", "content", "metadata"]
+      },
+      "post_execution": {
+        "description": "执行后报告",
+        "fields": ["timestamp", "role_name", "group_id", "content", "metadata"]
+      },
+      "operation": {
+        "description": "操作记录",
+        "fields": ["timestamp", "role_name", "group_id", "operation", "operation_type", "result", "metadata"]
+      },
+      "analysis": {
+        "description": "分析报告",
+        "fields": ["timestamp", "role_name", "group_id", "content", "metadata"]
+      }
+    },
+    "metadata_fields": {
+      "task_id": "任务ID",
+      "stage": "执行阶段",
+      "workflow_step": "工作流步骤",
+      "duration": "执行时长",
+      "success": "执行是否成功",
+      "error_code": "错误代码",
+      "user_feedback": "用户反馈"
+    },
+    "retention": {
+      "default_days": 90,
+      "important_logs_days": 365,
+      "archive_after_days": 30
+    },
+    "export": {
+      "supported_formats": ["json", "csv", "txt", "html"],
+      "default_format": "json",
+      "include_metadata": true
+    },
+    "search": {
+      "indexed_fields": ["role_name", "group_id", "operation_type", "timestamp"],
+      "full_text_search": true,
+      "case_sensitive": false
+    },
+    "notifications": {
+      "error_threshold": 5,
+      "warning_threshold": 10,
+      "daily_summary": true
+    }
+  },
+  "usage_examples": {
+    "log_role_report": {
+      "description": "记录角色报告",
+      "example": {
+        "role_name": "process_analyzer",
+        "group_id": "default_group",
+        "content": "进程分析报告内容...",
+        "report_type": "post_execution",
+        "metadata": {
+          "task_id": "task_123",
+          "stage": "执行后",
+          "workflow_step": "analysis"
+        }
+      }
+    },
+    "log_operation": {
+      "description": "记录角色操作",
+      "example": {
+        "role_name": "incident_responder",
+        "group_id": "default_group",
+        "operation": "终止恶意进程",
+        "operation_type": "tool_call",
+        "result": {"success": true, "process_id": 1234},
+        "metadata": {
+          "task_id": "task_123",
+          "tool_name": "terminate_process"
+        }
+      }
+    }
+  },
+  "integration_points": {
+    "workflow_engine": "工作流引擎集成点",
+    "task_manager": "任务管理器集成点",
+    "gui_components": "GUI组件集成点",
+    "decision_system": "决策系统集成点"
+  }
+}

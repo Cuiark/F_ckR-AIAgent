@@ -1,0 +1,124 @@
+{
+  "default_group": {
+    "description": "部门化安全监控工作流",
+    "modules": [
+      {
+        "name": "Process Data Collection",
+        "description": "进程部门数据收集",
+        "agent": "process_data_collector",
+        "department": "process_department",
+        "dependencies": [],
+        "outputs": ["process_data"]
+      },
+      {
+        "name": "Process Analysis",
+        "description": "进程部门安全分析",
+        "agent": "process_analyzer",
+        "department": "process_department",
+        "dependencies": ["process_data"],
+        "outputs": ["process_threats"]
+      },
+      {
+        "name": "Log Data Collection",
+        "description": "日志部门数据收集",
+        "agent": "log_data_collector",
+        "department": "log_department",
+        "dependencies": [],
+        "outputs": ["log_data"]
+      },
+      {
+        "name": "Log Analysis",
+        "description": "日志部门安全分析",
+        "agent": "log_analyzer",
+        "department": "log_department",
+        "dependencies": ["log_data"],
+        "outputs": ["log_threats"]
+      },
+      {
+        "name": "Service Data Collection",
+        "description": "服务部门数据收集",
+        "agent": "service_data_collector",
+        "department": "service_department",
+        "dependencies": [],
+        "outputs": ["service_data"]
+      },
+      {
+        "name": "Service Analysis",
+        "description": "服务部门安全分析",
+        "agent": "service_analyzer",
+        "department": "service_department",
+        "dependencies": ["service_data"],
+        "outputs": ["service_threats"]
+      },
+      {
+        "name": "Network Data Collection",
+        "description": "网络部门数据收集",
+        "agent": "network_data_collector",
+        "department": "network_department",
+        "dependencies": [],
+        "outputs": ["network_data"]
+      },
+      {
+        "name": "Network Analysis",
+        "description": "网络部门安全分析",
+        "agent": "network_analyzer",
+        "department": "network_department",
+        "dependencies": ["network_data"],
+        "outputs": ["network_threats"]
+      },
+      {
+        "name": "Threat Integration",
+        "description": "威胁情报整合",
+        "agent": "secretary",
+        "department": "coordination_department",
+        "dependencies": ["process_threats", "log_threats", "service_threats", "network_threats"],
+        "outputs": ["integrated_threats"]
+      },
+      {
+        "name": "Incident Response",
+        "description": "安全应急响应",
+        "agent": "incident_responder",
+        "department": "response_department",
+        "dependencies": ["integrated_threats"],
+        "outputs": ["response_actions"]
+      }
+    ]
+  },
+  "custom_group": {
+    "description": "自定义部门化安全分析工作流",
+    "modules": [
+      {
+        "name": "Process Data Collection",
+        "description": "进程部门数据收集",
+        "agent": "process_data_collector",
+        "department": "process_department",
+        "dependencies": [],
+        "outputs": ["process_data"]
+      },
+      {
+        "name": "Process Analysis",
+        "description": "进程部门安全分析",
+        "agent": "process_analyzer",
+        "department": "process_department",
+        "dependencies": ["process_data"],
+        "outputs": ["process_threats"]
+      },
+      {
+        "name": "Security Analysis",
+        "description": "综合安全分析",
+        "agent": "security_analyst",
+        "department": "coordination_department",
+        "dependencies": ["process_threats"],
+        "outputs": ["security_assessment"]
+      },
+      {
+        "name": "Report Generation",
+        "description": "安全报告生成",
+        "agent": "secretary",
+        "department": "coordination_department",
+        "dependencies": ["security_assessment"],
+        "outputs": ["final_report"]
+      }
+    ]
+  }
+}

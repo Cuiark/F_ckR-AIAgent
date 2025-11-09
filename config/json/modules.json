@@ -1,0 +1,61 @@
+{
+  "data_collection": {
+    "name": "数据收集",
+    "description": "收集系统安全相关数据，包括进程、服务和事件日志",
+    "agent": "data_collector",
+    "tools": ["GetProcessDetails", "GetServices", "GetWindowsLogs"],
+    "expected_output": "系统安全数据集合",
+    "timeout": 120,
+    "requires_approval": true
+  },
+  "process_analysis": {
+    "name": "进程分析",
+    "description": "分析系统进程，识别可疑或恶意进程",
+    "agent": "process_analyzer",
+    "tools": ["CompareWithBaseline", "AnalyzeProcessBehavior"],
+    "expected_output": "进程安全分析报告",
+    "timeout": 180,
+    "requires_approval": true,
+    "requires_data_from": ["data_collection"]
+  },
+  "log_analysis": {
+    "name": "日志分析",
+    "description": "分析Windows事件日志，识别潜在安全威胁",
+    "agent": "log_analyzer",
+    "tools": ["AnalyzeSecurityLogs", "CorrelateEvents"],
+    "expected_output": "日志安全分析报告",
+    "timeout": 180,
+    "requires_approval": true,
+    "requires_data_from": ["data_collection"]
+  },
+  "incident_response": {
+    "name": "应急响应",
+    "description": "根据分析结果执行应急响应措施",
+    "agent": "incident_responder",
+    "tools": ["TerminateProcess", "BlockIP", "AddToWhitelist"],
+    "expected_output": "应急响应执行报告",
+    "timeout": 240,
+    "requires_approval": true,
+    "requires_data_from": ["process_analysis", "log_analysis"]
+  },
+  "security_analysis": {
+    "name": "安全分析",
+    "description": "综合分析系统安全状况，识别潜在威胁",
+    "agent": "security_analyst",
+    "tools": ["AnalyzeSecurityData", "GenerateSecurityReport"],
+    "expected_output": "综合安全分析报告",
+    "timeout": 300,
+    "requires_approval": true,
+    "requires_data_from": ["data_collection"]
+  },
+  "threat_hunting": {
+    "name": "威胁狩猎",
+    "description": "主动寻找系统中的潜在威胁",
+    "agent": "threat_hunter",
+    "tools": ["HuntForThreats", "AnalyzeSuspiciousBehavior"],
+    "expected_output": "威胁狩猎报告",
+    "timeout": 360,
+    "requires_approval": true,
+    "requires_data_from": ["data_collection"]
+  }
+}

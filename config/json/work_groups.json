@@ -1,0 +1,28 @@
+{
+  "default_group": {
+    "id": "default_group",
+    "name": "默认安全响应组",
+    "description": "默认的安全响应工作组",
+    "departments": [
+      "process_department",
+      "log_department",
+      "service_department",
+      "network_department",
+      "response_department",
+      "coordination_department"
+    ],
+    "roles": [
+      "process_data_collector",
+      "process_analyzer",
+      "log_data_collector",
+      "log_analyzer",
+      "service_data_collector",
+      "service_analyzer",
+      "network_data_collector",
+      "network_analyzer",
+      "incident_responder",
+      "secretary"
+    ],
+    "created_at": "2025-06-20T18:36:13.144245"
+  }
+}
